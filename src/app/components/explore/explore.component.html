@@ -1,0 +1,77 @@
+<div class="container">
+  <div id="explore">
+    <!-- <h2>Find University</h2> -->
+    <div class="form-group">
+      <input
+      type="text"
+      id="search"
+      placeholder="Search university name"
+      name="search"
+      [(ngModel)]="inputValue"
+      (keyup)="getSuggestions(inputValue)"
+      class="form-group__input"
+      [ngClass]="{ 'has-suggestions': suggestions.length > 0 }"
+    />
+    
+    <div class="suggestions-dropdown" *ngIf="suggestions.length > 0">
+      <ul>
+        <li *ngFor="let suggestion of suggestions">
+          {{ suggestion.name }}
+        </li>
+      </ul>
+    </div>
+      <ng-select
+        [items]="countries"
+        bindLabel="name.common"
+        bindValue="name.common"
+        class="ng-select"
+        placeholder="Please choose a country"
+        [(ngModel)]="selectValue"
+      >
+      </ng-select>
+      <button (click)="showDetail()" class="form-group__button">
+        <i class="fas fa-search"></i> SEARCH
+      </button>
+    </div>
+    <h2 class="border-top" *ngIf="isDisplay">
+      {{ universities.length }} Colleges Found
+    </h2>
+
+    <section
+      class="universities"
+      *ngFor="
+        let university of universities
+          | paginate : { itemsPerPage: 10, currentPage: page }
+      "
+    >
+      <div class="university-center">
+        <div class="university">
+          <div class="university-desc">
+            <h4 class="university-title">
+              {{ university.name }}
+            </h4>
+
+            <p class="university-country">
+              {{ university.country | json | slice : 1 : -1 }}
+            </p>
+            <!-- <p>{{university.state-province}}</p> -->
+            <a
+              class="university-url"
+              href="https://{{ university.domains }}"
+              target="_blank"
+              >{{ university.domains }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="border-top" *ngIf="!isDisplay">
+      Select your country or university ..
+    </p>
+    <pagination-controls
+      *ngIf="isDisplay"
+      (pageChange)="page = $event"
+    ></pagination-controls>
+  </div>
+</div>

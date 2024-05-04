@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+input,
+select,
+textarea {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+body {
+  color: #636363;
+  background-color: #fff;
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2 {
+  letter-spacing: 0.25rem;
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 52px;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2 {
+    line-height: 1;
+  }
+}
+
+/*
+      Animation
+    */
+
+@keyframes show {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Header */
+
+.revealUp {
+  opacity: 0;
+  visibility: hidden;
+}
+#about h2 {
+  color: #636363;
+}
+#about h1 {
+  color: #fff;
+  margin-top: 1.25rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+#about {
+  font-size: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 500px;
+  margin-top: 7rem;
+}
+
+.main-btn {
+  text-transform: uppercase;
+  background: #27272a;
+  color: #fff;
+  letter-spacing: 0.25rem;
+  display: inline-block;
+  font-weight: 700;
+  transition: all 0.3s linear;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  outline: 0.125rem solid #27272a;
+  outline-offset: 0.25rem;
+  font-size: 1.25rem;
+  padding: 1rem;
+  width: 20rem;
+  margin: 50px auto;
+  animation: show 5s linear 1;
+  text-align: center;
+}
+.main-btn:hover {
+  color: #27272a;
+  background-color: #fff;
+}
+
+p {
+  font-size: 20px;
+  text-align: center;
+  color: #999;
+}
+
+.logo-container {
+  background-color: #fff;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+}

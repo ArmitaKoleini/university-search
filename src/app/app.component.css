@@ -1,0 +1,9 @@
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  background-image: url("/assets/images/overlay.png"),
+    linear-gradient(45deg, #71717a 15%, #27272a 85%);
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+}
