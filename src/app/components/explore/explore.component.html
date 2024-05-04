@@ -14,7 +14,7 @@
         [ngClass]="{ 'has-suggestions': suggestions.length > 0 }"
       />
 
-      <div class="suggestions-dropdown" *ngIf="suggestions.length > 0">
+      <div class="suggestions-dropdown" *ngIf="suggestions.length > 0 && inputValue">
         <ul>
           <li *ngFor="let suggestion of suggestions">
             <span>{{ suggestion.name }}</span>

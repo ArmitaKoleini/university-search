@@ -45,4 +45,5 @@ export class ExploreComponent {
         this.suggestions = results;
       });
   }
+  
 }
