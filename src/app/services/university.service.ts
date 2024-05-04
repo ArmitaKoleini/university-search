@@ -11,12 +11,16 @@ export class UniversityService {
 
   university: string = '';
   country: string = '';
+  url: string = '';
 
   getUniversity() {
-    return this.http.get(
-      `http://universities.hipolabs.com/search?name=${this.university}&country=${this.country}`
-    );
+     this.url = `http://universities.hipolabs.com/search?name=${this.university}`;
+    if (this.country) {
+      this.url += `&country=${this.country}`;
+    }
+    return this.http.get(this.url);
   }
+  
 
   getSuggestions(inputValue: string): Observable<IUniversity[]> {
     return this.http.get<IUniversity[]>(

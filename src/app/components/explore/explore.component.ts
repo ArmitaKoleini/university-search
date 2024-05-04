@@ -31,6 +31,7 @@ export class ExploreComponent {
     this.UniversityService.university = this.inputValue;
     this.UniversityService.country = this.selectValue;
     this.UniversityService.getUniversity().subscribe((response: any) => {
+      console.log(response)
       this.universities = response;
     });
     this.isDisplay = true;
