@@ -45,9 +45,4 @@ export class ExploreComponent {
         this.suggestions = results;
       });
   }
-  onSelect(university: IUniversity) {
-    this.inputValue = university.name; // Set selected university name
-    this.suggestions = []; // Clear suggestions (optional)
-    // Perform additional actions based on selection
-  }
 }

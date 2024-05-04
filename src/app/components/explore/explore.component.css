@@ -79,10 +79,10 @@ p {
   border-radius: 5px;
   border-radius: 5px;
   padding: 10px;
-  position: relative;
+  width: 100%;
 }
 
-.form-group__input,
+.typeahead-container,
 .ng-select {
   flex: 1;
   min-width: 200px;
@@ -119,12 +119,22 @@ p {
     flex-direction: column;
     padding: 0.3rem;
   }
-  .form-group__input {
+  .form-group__input,.typeahead-container {
     width: 100%;
   }
   .ng-select {
     width: 100%;
   }
+}
+
+@media screen and (max-width: 400px) {
+
+.typeahead-container,
+.ng-select {
+  flex: 1;
+  min-width: 100px;
+}
+
 }
 
 .border-top {
@@ -209,23 +219,27 @@ p {
   }
 }
 
-
 /* typeahead */
 
+.typeahead-container {
+  display: block;
+  position: relative;
+}
+
 .suggestions-dropdown {
-  position: absolute; 
-  top: 90%;
+  position: absolute;
+  width: 100%;
+  height: auto;
   background-color: #fff;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  display: none; /* Initially hidden */
-  max-height: 300px; /* Adjust as needed */
-  overflow-y: auto; /* Enable scrolling */
+  display: none;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
-
 .form-group__input:focus + .suggestions-dropdown {
-  display: block; /* Show dropdown on input focus */
+  display: block;
 }
 
 .suggestions-dropdown ul {
@@ -236,9 +250,9 @@ p {
 
 .suggestions-dropdown li {
   padding: 12px 16px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
-.suggestions-dropdown li:hover {
-  background-color: #f0f0f0;
-}
+/* .suggestions-dropdown li:hover {
+  background-color: #ebf5ff;
+} */

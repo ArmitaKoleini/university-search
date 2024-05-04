@@ -2,24 +2,26 @@
   <div id="explore">
     <!-- <h2>Find University</h2> -->
     <div class="form-group">
+      <div class="typeahead-container">
       <input
-      type="text"
-      id="search"
-      placeholder="Search university name"
-      name="search"
-      [(ngModel)]="inputValue"
-      (keyup)="getSuggestions(inputValue)"
-      class="form-group__input"
-      [ngClass]="{ 'has-suggestions': suggestions.length > 0 }"
-    />
-    
-    <div class="suggestions-dropdown" *ngIf="suggestions.length > 0">
-      <ul>
-        <li *ngFor="let suggestion of suggestions">
-          {{ suggestion.name }}
-        </li>
-      </ul>
-    </div>
+        type="text"
+        id="search"
+        placeholder="Search university name"
+        name="search"
+        [(ngModel)]="inputValue"
+        (keyup)="getSuggestions(inputValue)"
+        class="form-group__input"
+        [ngClass]="{ 'has-suggestions': suggestions.length > 0 }"
+      />
+
+      <div class="suggestions-dropdown" *ngIf="suggestions.length > 0">
+        <ul>
+          <li *ngFor="let suggestion of suggestions">
+            <span>{{ suggestion.name }}</span>
+          </li>
+        </ul>
+      </div>
+      </div>
       <ng-select
         [items]="countries"
         bindLabel="name.common"
