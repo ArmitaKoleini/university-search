@@ -3,24 +3,26 @@
     <!-- <h2>Find University</h2> -->
     <div class="form-group">
       <div class="typeahead-container">
-      <input
-        type="text"
-        id="search"
-        placeholder="Search university name"
-        name="search"
-        [(ngModel)]="inputValue"
-        (keyup)="getSuggestions(inputValue)"
-        class="form-group__input"
-        [ngClass]="{ 'has-suggestions': suggestions.length > 0 }"
-      />
+        <input
+          type="text"
+          id="search"
+          placeholder="Search university name"
+          name="search"
+          [(ngModel)]="inputValue"
+          (keyup)="onSearchChange(inputValue)"
+          class="form-group__input"
+        />
 
-      <div class="suggestions-dropdown" *ngIf="suggestions.length > 0 && inputValue">
-        <ul>
-          <li *ngFor="let suggestion of suggestions">
-            <span>{{ suggestion.name }}</span>
-          </li>
-        </ul>
-      </div>
+        <div
+          class="suggestions-dropdown"
+          *ngIf="suggestions.length > 0 && inputValue"
+        >
+          <ul>
+            <li *ngFor="let suggestion of suggestions">
+              <span>{{ suggestion.name }}</span>
+            </li>
+          </ul>
+        </div>
       </div>
       <ng-select
         [items]="countries"

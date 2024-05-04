@@ -13,9 +13,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HttpClientModule } from '@angular/common/http';
-// import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // If using ngx-bootstrap
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
   declarations: [
@@ -36,8 +33,6 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     NgSelectModule,
     NgxPaginationModule,
     FontAwesomeModule,
-    BsDropdownModule,
-    TypeaheadModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

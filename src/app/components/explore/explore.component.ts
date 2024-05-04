@@ -36,14 +36,9 @@ export class ExploreComponent {
     this.isDisplay = true;
   }
 
-  getSuggestions(query: string) {
-    this.http
-      .get<IUniversity[]>(
-        `http://universities.hipolabs.com/search?name=${query}`
-      )
-      .subscribe((results) => {
-        this.suggestions = results;
-      });
+  onSearchChange(inputValue: string): void {
+    this.UniversityService.getSuggestions(inputValue).subscribe(
+      (suggestions) => (this.suggestions = suggestions)
+    );
   }
-  
 }
