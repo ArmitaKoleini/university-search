@@ -1,28 +1,15 @@
 <div class="container">
   <div id="explore">
-    <!-- <h2>Find University</h2> -->
     <div class="form-group">
       <div class="typeahead-container">
         <input
+          id="typeahead-basic"
           type="text"
-          id="search"
-          placeholder="Search university name"
-          name="search"
-          [(ngModel)]="inputValue"
-          (keyup)="onSearchChange(inputValue)"
           class="form-group__input"
+          placeholder="Search university name"
+          [(ngModel)]="inputValue"
+          [ngbTypeahead]="search"
         />
-
-        <div
-          class="suggestions-dropdown"
-          *ngIf="suggestions.length > 0 && inputValue"
-        >
-          <ul>
-            <li *ngFor="let suggestion of suggestions">
-              <span>{{ suggestion.name }}</span>
-            </li>
-          </ul>
-        </div>
       </div>
       <ng-select
         [items]="countries"
@@ -74,7 +61,7 @@
       Select your country or university ..
     </p>
     <pagination-controls
-      *ngIf="isDisplay"
+      *ngIf="isDisplay && universities.length"
       (pageChange)="page = $event"
     ></pagination-controls>
   </div>

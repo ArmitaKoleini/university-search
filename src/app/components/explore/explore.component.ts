@@ -1,13 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { IUniversity } from '../../iuniversity';
 import { CountryService } from '../../services/country.service';
 import { UniversityService } from '../../services/university.service';
+import { Observable, OperatorFunction, of } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  switchMap,
+} from 'rxjs/operators';
+import { FormsModule } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.component.html',
   styleUrl: './explore.component.css',
+  encapsulation: ViewEncapsulation.None,
 })
 export class ExploreComponent {
   universities!: IUniversity[];
@@ -31,15 +41,27 @@ export class ExploreComponent {
     this.UniversityService.university = this.inputValue;
     this.UniversityService.country = this.selectValue;
     this.UniversityService.getUniversity().subscribe((response: any) => {
-      console.log(response)
       this.universities = response;
     });
     this.isDisplay = true;
   }
 
-  onSearchChange(inputValue: string): void {
-    this.UniversityService.getSuggestions(inputValue).subscribe(
-      (suggestions) => (this.suggestions = suggestions)
+  search: OperatorFunction<string, readonly string[]> = (
+    text$: Observable<string>
+  ) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      switchMap((term) => {
+        if (term.length < 2) {
+          return of([]);
+        }
+        return this.UniversityService.getSuggestions(term).pipe(
+          map((suggestions) => suggestions.slice(0, 300)),
+          map((universities) =>
+            universities.map((university) => university.name)
+          )
+        );
+      })
     );
-  }
 }

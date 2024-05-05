@@ -153,6 +153,9 @@ ul.icons li:last-child {
   color: rgba(255, 255, 255, 0.65);
 }
 
+#footer p {
+  color: rgba(255, 255, 255, 0.65);
+}
 #footer h2 {
   color: #ffffff;
 }
