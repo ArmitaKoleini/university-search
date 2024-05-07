@@ -9,6 +9,7 @@
           placeholder="Search university name"
           [(ngModel)]="inputValue"
           [ngbTypeahead]="search"
+          (keyup.enter)="showDetail()"
         />
       </div>
       <ng-select
@@ -27,7 +28,6 @@
     <h2 class="border-top" *ngIf="isDisplay">
       {{ universities.length }} Colleges Found
     </h2>
-
     <section
       class="universities"
       *ngFor="

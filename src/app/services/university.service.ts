@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { IUniversity } from '../iuniversity';
+import { IUniversity } from '../interfaces/iuniversity';
 import { Observable, map } from 'rxjs';
 
 @Injectable({

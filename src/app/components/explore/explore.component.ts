@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { IUniversity } from '../../iuniversity';
+import { IUniversity } from '../../interfaces/iuniversity';
 import { CountryService } from '../../services/country.service';
 import { UniversityService } from '../../services/university.service';
 import { Observable, OperatorFunction, of } from 'rxjs';
@@ -10,8 +10,6 @@ import {
   map,
   switchMap,
 } from 'rxjs/operators';
-import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-explore',
@@ -20,7 +18,7 @@ import { JsonPipe } from '@angular/common';
   encapsulation: ViewEncapsulation.None,
 })
 export class ExploreComponent {
-  universities!: IUniversity[];
+  universities: IUniversity[] = [];
   inputValue: string = '';
   selectValue: string = '';
   countries!: string[];

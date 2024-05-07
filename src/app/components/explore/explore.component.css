@@ -261,3 +261,7 @@ ngb-typeahead-window {
 .ngb-highlight {
   font-weight: bold;
 }
+
+#ngb-live {
+  display: none;
+}
