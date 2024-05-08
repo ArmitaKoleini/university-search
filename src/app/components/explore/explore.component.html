@@ -19,6 +19,7 @@
         class="ng-select"
         placeholder="Please choose a country"
         [(ngModel)]="selectValue"
+        (keyup.enter)="showDetail()"
       >
       </ng-select>
       <button (click)="showDetail()" class="form-group__button">
@@ -28,6 +29,7 @@
     <h2 class="border-top" *ngIf="isDisplay">
       {{ universities.length }} Colleges Found
     </h2>
+    <app-spinner *ngIf="showSpinner"></app-spinner>
     <section
       class="universities"
       *ngFor="

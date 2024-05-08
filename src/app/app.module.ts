@@ -10,8 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     AboutComponent,
     ExploreComponent,
     FooterComponent,
+    SpinnerComponent,
   ],
   imports: [
     NgbTypeaheadModule,
@@ -34,7 +37,13 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     NgxPaginationModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

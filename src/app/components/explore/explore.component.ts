@@ -25,6 +25,7 @@ export class ExploreComponent {
   isDisplay: boolean = false;
   page: number = 1;
   suggestions: IUniversity[] = [];
+  showSpinner: boolean = false;
 
   constructor(
     private UniversityService: UniversityService,
@@ -36,12 +37,16 @@ export class ExploreComponent {
     });
   }
   showDetail() {
+    this.showSpinner = true;
     this.UniversityService.university = this.inputValue;
     this.UniversityService.country = this.selectValue;
     this.UniversityService.getUniversity().subscribe((response: any) => {
       this.universities = response;
     });
     this.isDisplay = true;
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 1000); 
   }
 
   search: OperatorFunction<string, readonly string[]> = (
